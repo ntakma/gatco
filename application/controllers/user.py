@@ -34,7 +34,7 @@ async def user_logout(request):
 @app.route("/user/current_user", methods=["GET"])
 async def user_current_user(request):
     user_id = auth.current_user(request)
-    print(user_id)
+
 
     user = User.query.filter(User.id == user_id).first()
     if user is not None:
@@ -43,3 +43,4 @@ async def user_current_user(request):
     else:
         return json({"error_code": "NOT_FOUND", "error_message": "User not found"}, status=520)
     return json({"error_code": "UNKNOWN", "error_message": "Unknown error"}, status=520)
+
